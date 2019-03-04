@@ -5,7 +5,8 @@
 
 # mysql -u [ユーザー名] -p
 
-u / p ログイン
+u / p ログイン \
+mysql -h localhost -P 3306 -u example_user -p example_db
 
 # exit
 
