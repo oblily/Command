@@ -11,6 +11,7 @@
 
 ## git clone
 
+リポジトリからソース取得
 [Detail](https://git-scm.com/docs/git-clone)
 
 # Basic Snapshotting

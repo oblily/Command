@@ -26,6 +26,7 @@
 
 # eb health
 
+--refresh　リアルチェック
 環境の最新のヘルスステータスを返します。[Detail](https://docs.aws.amazon.com/ja_jp/elasticbeanstalk/latest/dg/eb3-health.html)
 
 # eb list

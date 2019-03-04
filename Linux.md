@@ -22,3 +22,6 @@
 ファイルの実行権限追加
 例：  chmod +x /usr/local/bin/docker-compose
 
+# df / free
+
+メモリ、ディスク使用率確認
