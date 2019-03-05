@@ -174,3 +174,9 @@ aws kinesis get-shard-iterator --shard-id shardId-000000000000 --shard-iterator-
 ストリームの削除
 
 aws kinesis delete-stream --stream-name Foo
+
+# Elasticbeanstalk
+
+## aws elasticbeanstalk list-available-solution-stacks
+
+List all the Stack Solution stacks.

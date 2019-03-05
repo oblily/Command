@@ -55,6 +55,6 @@ LISTENしているポート一覧取得.
 
 ログの後ろから５０行取得
 
-# service httpd status
+# service httpd status[start][restart][stop]
 
 サービスの起動確認
