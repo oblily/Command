@@ -73,7 +73,8 @@ outputfile.txt
 
 ## aws dynamodb list-tables
 
-テーブル一覧
+テーブル一覧 \
+--endpoint-url <http://localhost:8000/>
 
 ## aws dynamodb create-table
 

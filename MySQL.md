@@ -72,13 +72,13 @@ CREATE TABLE [テーブル名] (
 
 例：
 mysql > CREATE TABLE `m_users` ( \
-          `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT "ID", \
-          `user_name` VARCHAR(100) NOT NULL COMMENT "ユーザー名", \
-          `mail_address` VARCHAR(200) NOT NULL COMMENT "メールアドレス", \
-          `password` VARCHAR(100) NOT NULL COMMENT "パスワード", \
-          `created` datetime DEFAULT NULL COMMENT "登録日", \
-          `modified` datetime DEFAULT NULL COMMENT "更新日" \
-        ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+&nbsp;&nbsp;&nbsp;&nbsp;`id` int NOT NULL AUTO_INCREMENT PRIMARY KEY COMMENT "ID", \
+&nbsp;&nbsp;&nbsp;&nbsp;`user_name` VARCHAR(100) NOT NULL COMMENT "ユーザー名", \
+ &nbsp;&nbsp;&nbsp;&nbsp;`mail_address` VARCHAR(200) NOT NULL COMMENT "メールアドレス", \
+&nbsp;&nbsp;&nbsp;&nbsp;`password` VARCHAR(100) NOT NULL COMMENT "パスワード", \
+&nbsp;&nbsp;&nbsp;&nbsp;`created` datetime DEFAULT NULL COMMENT "登録日", \
+&nbsp;&nbsp;&nbsp;&nbsp;`modified` datetime DEFAULT NULL COMMENT "更新日" \
+&nbsp;&nbsp;) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ## DROP TABLE [テーブル名]
 
@@ -98,7 +98,7 @@ SHOW FULL COLUMNS FROM [テーブル名];　詳細情報表示
 
 例：
 INSERT INTO m_users (user_name, mail_address, password, created, modified) \
-          VALUES ("Qii Taro", "qiitaro@hoge.com", "123123", now(), now())
+&nbsp;&nbsp;&nbsp;&nbsp;VALUES ("Qii Taro", "qiitaro@hoge.com", "123123", now(), now())
 
 ## UPDATE [テーブル名] SET [フィールド名]=[値] [条件式]
 
@@ -109,6 +109,16 @@ INSERT INTO m_users (user_name, mail_address, password, created, modified) \
 ## DELETE FROM [テーブル名] (WHERE [条件式])
 
 レコード削除
+
+## Alter table [テーブル名] add [フィールド名]=[値] [条件式]
+
+テーブルの構造を変更する \
+例： \
+列追加：alter table test add col1 varchar(255) ; \
+属性変更：
+alter table test change col1 varchar(100); \
+外部参照追加：
+ALTER TABLE XXA ADD FOREIGN KEY (col_id) REFERENCES XXB (id) ON UPDATE RESTRICT ON DELETE RESTRICT;
 
 # DB DUMP関連
 
@@ -128,6 +138,8 @@ test_dbデータベースのusersテーブルを対象とする
 
 test_dbデータベースのusersテーブルのデータ内でidが５未満を対象とする
 
+# DB Retore関連
+
 ## mysql -u[ユーザー名] -p new_db < [ダンプファイル名]
 
-リストア
+リストア(定義ファイルからDDL作成)
