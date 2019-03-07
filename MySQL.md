@@ -117,8 +117,15 @@ INSERT INTO m_users (user_name, mail_address, password, created, modified) \
 列追加：alter table test add col1 varchar(255) ; \
 属性変更：
 alter table test change col1 varchar(100); \
-外部参照追加：
-ALTER TABLE XXA ADD FOREIGN KEY (col_id) REFERENCES XXB (id) ON UPDATE RESTRICT ON DELETE RESTRICT;
+外部参照追加： \
+ALTER TABLE XXA ADD FOREIGN KEY (col_id) REFERENCES XXB (id) ON UPDATE RESTRICT ON DELETE RESTRICT; \
+カラム名の変更方法 \
+ALTER TABLE tbl_name CHANGE [COLUMN] old_col_name column_definition; \
+外部キーを削除する \
+alter table article drop foreign key article_ibfk_1; \
+外部キーを付ける \
+alter table article add constraint article_ibfk_1 foreign key (user_id) references user(id) on delete cascade on update cascade; \
+-- alter table article add foreign key (user_id) references user(id) on delete cascade on update cascade;
 
 # DB DUMP関連
 

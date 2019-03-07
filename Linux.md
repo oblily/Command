@@ -22,6 +22,12 @@
 ファイルの実行権限追加
 例：  chmod +x /usr/local/bin/docker-compose
 
+# rsync -av 元　先
+
+ファイルコピー \
+例： \
+rsync -av /vagrant/src/heapdump-5* /vagrant_data/src/
+
 # df / free
 
 メモリ、ディスク使用率確認
