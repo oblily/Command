@@ -469,7 +469,7 @@ $ chmod g-rwx file.txt
 $ chmod -R ug+rwx file.txt
 更多示例：7 Chmod Command Examples for Beginners
 
-33. chown
+33. chown [-R] 属主名：属组名 文件名
 
 chown用于改变文件属主和属组
 
@@ -479,6 +479,11 @@ $ chown oracle:dba dbora.sh
 使用-R选项对目录和目录下的文件进行递归修改
 
 $ chown -R oracle:dba /home/oracle
+
+34. chgrp [-R] 属组名 文件名
+
+更改文件属组
+
 34. passwd
 
 passwd用于在命令行修改密码，使用这个命令会要求你先输入旧密码，然后输入新密码
