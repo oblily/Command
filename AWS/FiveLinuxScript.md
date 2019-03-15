@@ -4,8 +4,6 @@
 
 #network
 
-#Mike.Xu
-
 while : ; do
 
 time='date +%m"-"%d" "%k":"%M'
