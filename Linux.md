@@ -68,7 +68,7 @@ LISTENしているポート一覧取得.
 
 # 归档操作
 
-## tar
+## 1. tar
 
 ### $ tar cvf archive_name.tar dirname/
 
@@ -82,70 +82,75 @@ LISTENしているポート一覧取得.
 
 查看tar文件
 
-2. grep
+# 2. grep
+
+## $ grep -i "the" demo_file
 
 在文件中查找字符串(不区分大小写)
 
-$ grep -i "the" demo_file
+## $ grep -A 3 -i "example" demo_text
+
 输出成功匹配的行，以及该行之后的三行
 
-$ grep -A 3 -i "example" demo_text
+## $ grep -r "ramesh" *
+
 在一个文件夹中递归查询包含指定字符串的文件
 
-$ grep -r "ramesh" *
-更多示例：Get a Grip on the Grep! – 15 Practical Grep Command Examples
+# 3. find
 
-3. find
+## $ find -iname "MyProgram.c"
 
 查找指定文件名的文件(不区分大小写)
 
-$ find -iname "MyProgram.c"
+## $ find -iname "MyProgram.c" -exec md5sum {} \
+
 对找到的文件执行某个命令
 
-$ find -iname "MyProgram.c" -exec md5sum {} \;
+## $ find ~ -empty
+
 查找home目录下的所有空文件
 
-$ find ~ -empty
-更多示例：Mommy, I found it! — 15 Practical Linux Find Command Examples
+# 4. ssh
 
-4. ssh
+## $ ssh -l jsmith remotehost.example.com
 
 登录到远程主机
 
-$ ssh -l jsmith remotehost.example.com
+## $ ssh -v -l jsmith remotehost.example.com
+
 调试ssh客户端
 
-$ ssh -v -l jsmith remotehost.example.com
+## $ ssh -V
+
 显示ssh客户端版本
 
-$ ssh -V
-更多示例：5 Basic Linux SSH Client Commands
+# 5. sed
 
-5. sed
+## $ sed 's/.$//' filename
 
 当你将Dos系统中的文件复制到Unix/Linux后，这个文件每行都会以\r\n结尾，sed可以轻易将其转换为Unix格式的文件，使用\n结尾的文件
 
-$ sed 's/.$//' filename
+## $ sed -n '1!G; h; p' filename
+
 反转文件内容并输出
 
-$ sed -n '1!G; h; p' filename
+## $ sed '/./=' thegeekstuff.txt | sed 'N; s/\n/ /'
+
 为非空行添加行号
 
-$ sed '/./=' thegeekstuff.txt | sed 'N; s/\n/ /'
-更多示例：Advanced Sed Substitution Examples
+# 6. awk
 
-6. awk
+## $ awk '!($0 in array) { array[$0]; print}' temp
 
 删除重复行
 
-$ awk '!($0 in array) { array[$0]; print}' temp
+## $ awk -F ':' '$3=$4' /etc/passwd
+
 打印/etc/passwd中所有包含同样的uid和gid的行
 
-$ awk -F ':' '$3=$4' /etc/passwd
-打印文件中的指定部分的字段
+## $ awk '{print $2,$5;}' employee.txt
 
-$ awk '{print $2,$5;}' employee.txt
-更多示例：8 Powerful Awk Built-in Variables – FS, OFS, RS, ORS, NR, NF, FILENAME, FNR
+打印文件中的指定部分的字段
 
 7. vim
 

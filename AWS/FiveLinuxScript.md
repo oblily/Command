@@ -1,8 +1,7 @@
-1、查看主机网卡流量
 
-#!/bin/bash
+# 查看主机网卡流量
 
-#network
+<#!/bin/bash
 
 while : ; do
 
@@ -28,15 +27,11 @@ echo "$time Now_In_Speed: "$rx_result"kbps Now_OUt_Speed: "$tx_result"kbps"
 
 sleep 2
 
-done
+done>
 
-2、系统状况监控
+# 系统状况监控
 
-#!/bin/sh
-
-#systemstat.sh
-
-#Mike.Xu
+<#!/bin/sh
 
 IP=192.168.1.227
 
@@ -46,7 +41,7 @@ free -m | grep "Mem" >> ./temp/mem.txt
 
 df -k | grep "sda1" >> ./temp/drive_sda1.txt
 
-#df -k | grep sda2 >> ./temp/drive_sda2.txt
+//#df -k | grep sda2 >> ./temp/drive_sda2.txt
 
 df -k | grep "/mnt/storage_0" >> ./temp/mnt_storage_0.txt
 
@@ -56,13 +51,13 @@ time=`date +%m"."%d" "%k":"%M`
 
 connect=`netstat -na | grep "219.238.148.30:80" | wc -l`
 
-echo "$time $connect" >> ./temp/connect_count.txt
+echo "$time $connect" >> ./temp/connect_count.txt>
 
-3、监控主机的磁盘空间,当使用空间超过90％就通过发mail来发警告
+# 监控主机的磁盘空间,当使用空间超过90％就通过发mail来发警告
 
-#!/bin/bash
+<#!/bin/bash
 
-#monitor available disk space
+//#monitor available disk space
 
 SPACE='df | sed -n '/ / $ / p' | gawk '{print $5}' | sed 's/%//'
 
@@ -70,15 +65,15 @@ if [ $SPACE -ge 90 ]
 
 then
 
-jbxue123@163.com
+xxx@gmail.com
 
-fi
+fi>
 
-4、 监控CPU和内存的使用情况
+# 监控CPU和内存的使用情况
 
-#!/bin/bash
+<#!/bin/bash
 
-#script to capture system statistics
+//#script to capture system statistics
 
 OUTFILE=/home/xu/capstats.csv
 
@@ -98,15 +93,11 @@ FREE='echo $VMOUT | sed -n '/[0-9]/p' | sed -n '2p' | gawk '{print $4} ' '
 
 IDLE='echo $VMOUT | sed -n '/[0-9]/p' | sed -n '2p' |gawk '{print $15}' '
 
-echo "$DATE,$TIME,$USERS,$LOAD,$FREE,$IDLE" >> $OUTFILE
+echo "$DATE,$TIME,$USERS,$LOAD,$FREE,$IDLE" >> $OUTFILE>
 
-5、全方位监控主机
+# 全方位监控主机
 
-#!/bin/bash
-
-# check_xu.sh
-
-# 0 * * * * /home/check_xu.sh
+<#!/bin/bash
 
 DAT="`date +%Y%m%d`"
 
@@ -118,7 +109,7 @@ DELAY=60
 
 COUNT=60
 
-# whether the responsible directory exist
+//# whether the responsible directory exist
 
 if ! test -d ${DIR}
 
@@ -128,33 +119,33 @@ then
 
 fi
 
-# general check
+//# general check
 
 export TERM=linux
 
 /usr/bin/top -b -d ${DELAY} -n ${COUNT} > ${DIR}/top_${DAT}.log 2>&1 &
 
-# cpu check
+//# cpu check
 
 /usr/bin/sar -u ${DELAY} ${COUNT} > ${DIR}/cpu_${DAT}.log 2>&1 &
 
-#/usr/bin/mpstat -P 0 ${DELAY} ${COUNT} > ${DIR}/cpu_0_${DAT}.log 2>&1 &
+//#/usr/bin/mpstat -P 0 ${DELAY} ${COUNT} > ${DIR}/cpu_0_${DAT}.log 2>&1 &
 
-#/usr/bin/mpstat -P 1 ${DELAY} ${COUNT} > ${DIR}/cpu_1_${DAT}.log 2>&1 &
+//#/usr/bin/mpstat -P 1 ${DELAY} ${COUNT} > ${DIR}/cpu_1_${DAT}.log 2>&1 &
 
-# memory check
+//# memory check
 
 /usr/bin/vmstat ${DELAY} ${COUNT} > ${DIR}/vmstat_${DAT}.log 2>&1 &
 
-# I/O check
+//# I/O check
 
 /usr/bin/iostat ${DELAY} ${COUNT} > ${DIR}/iostat_${DAT}.log 2>&1 &
 
-# network check
+//# network check
 
 /usr/bin/sar -n DEV ${DELAY} ${COUNT} > ${DIR}/net_${DAT}.log 2>&1 &
 
-#/usr/bin/sar -n EDEV ${DELAY} ${COUNT} > ${DIR}/net_edev_${DAT}.log 2>&1 &
+//#/usr/bin/sar -n EDEV ${DELAY} ${COUNT} > ${DIR}/net_edev_${DAT}.log 2>&1 &
 
 放在crontab里每小时自动执行：
 
