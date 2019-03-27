@@ -65,6 +65,54 @@ LISTENしているポート一覧取得.
 
 サービスの起動確認
 
+# 安装关联
+
+## 1. ssh
+
+### $ ssh -l jsmith remotehost.example.com
+
+登录到远程主机
+
+### $ ssh -v -l jsmith remotehost.example.com
+
+调试ssh客户端
+
+### $ ssh -V
+
+显示ssh客户端版本
+
+## 2. ssh-keygen
+
+### ssh-keygen -t rsa -f ~/.ssh/id_rsa_ansible -N ""
+
+秘密键/公开键文件生成（RSA加密，新密码为空）\
+生成文件
+  
+ 1. id_rsa_ansible
+ 2. id_rsa_ansible.pub（公开键）
+
+## 3. ssh-keyscan
+
+### ssh-keyscan github.com >> ~/.ssh/known_hosts
+
+初回SSH接続時にでる Are you sure you want to continue connecting (yes/no)? という問いに対して yes と答えたのと同じように、指定したホストの公開鍵を取得して ~/.ssh/known_hosts ファイルへ追記してくれる。
+
+## 4. ssh-copy-id
+
+### ssh-copy-id -i ${identity_file} ${USER}@${target_host}
+
+ssh-copy-id -i ~/.ssh/hoge.pub user01@192.168.10.15 \
+sshの公開鍵認証の鍵登録（.ssh/authorized_keys）
+
+## 4. visudo
+
+visudoコマンドは管理者の権限でのみ操作できる。（/etc/sudoers）
+
+# file
+
+## file xx.text
+
+显示文件的属性，编码等信息
 
 # 归档操作
 
@@ -110,21 +158,7 @@ LISTENしているポート一覧取得.
 
 查找home目录下的所有空文件
 
-# 4. ssh
-
-## $ ssh -l jsmith remotehost.example.com
-
-登录到远程主机
-
-## $ ssh -v -l jsmith remotehost.example.com
-
-调试ssh客户端
-
-## $ ssh -V
-
-显示ssh客户端版本
-
-# 5. sed
+# 4. sed
 
 ## $ sed 's/.$//' filename
 

@@ -1,4 +1,6 @@
-# ansible --version
+# ansible
+
+## ansible --version
 
 Result: \
 ansible 2.7.5 \
@@ -8,4 +10,6 @@ ansible 2.7.5 \
 &nbsp;&nbsp;executable location = /usr/bin/ansible \
 &nbsp;&nbsp;python version = 2.7.5 (default, Oct 30 2018, 23:45:53) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
 
-#
+## ansible-playbook xx.yml
+
+run playbook.
