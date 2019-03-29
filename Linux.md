@@ -1,46 +1,46 @@
 
-# which XX
+# 1. which XX
 
 查看 程序安装目录
 例；which docker-compose
 
-# echo $PATH
+# 2. echo $PATH
 
 系统PATH确认
 
-# export PATH=$PATH:/usr/local/XX
+# 3. export PATH=$PATH:/usr/local/XX
 
 自分のパス追加
 
-# sudo ln -s /usr/local/bin/XX /usr/bin/XX
+# 4. sudo ln -s /usr/local/bin/XX /usr/bin/XX
 
 シンボリックリンク追加
 例；sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
-# chmod +x XX
+# 5. chmod +x XX
 
 ファイルの実行権限追加
 例：  chmod +x /usr/local/bin/docker-compose
 
-# rsync -av 元　先
+# 6. rsync -av 元　先
 
 ファイルコピー \
 例： \
 rsync -av /vagrant/src/heapdump-5* /vagrant_data/src/
 
-# df / free
+# 7. df / free
 
 メモリ、ディスク使用率確認
 
-# netstat -an | grep LISTEN
+# 8. netstat -an | grep LISTEN
 
 LISTENしているポート一覧取得.
 
-# netstat -tan | grep ':8081' | awk '{print $6}' | sort | uniq -c
+# 9. netstat -tan | grep ':8081' | awk '{print $6}' | sort | uniq -c
 
 接続状態の確認と接続元IPのカウントをnetstatで行う。(8081ポート)
 
-# netstat -tan | grep ':8081' | awk '{print $6}' │: 3100000 | sort | uniq -c
+# 10. netstat -tan | grep ':8081' | awk '{print $6}' │: 3100000 | sort | uniq -c
 
 ポート8081の接続状態（接続数など） \
 結果例： \
@@ -48,26 +48,26 @@ LISTENしているポート一覧取得.
 &nbsp;&nbsp;&nbsp;&nbsp;1 LISTEN \
 &nbsp;&nbsp;&nbsp;&nbsp;1 TIME_WAIT
 
-# vmstat 10 3
+# 11. vmstat 10 3
 
 10秒ごとに３回でシステム情報を取得して表示する。
 
-# systemctl status XX
+# 12. systemctl status XX
 
 プロセス運行情報 \
 例：systemctl status redis
 
-# tail -n 50 -f /var/log/nodejs/nodejs.log
+# 13. tail -n 50 -f /var/log/nodejs/nodejs.log
 
 ログの後ろから５０行取得
 
-# service httpd status[start][restart][stop]
+# 14. service httpd status[start][restart][stop]
 
 サービスの起動確認
 
-# 安装关联
+# 15. SSH接続関連
 
-## 1. ssh
+## 15.1. ssh
 
 ### $ ssh -l jsmith remotehost.example.com
 
@@ -81,7 +81,7 @@ LISTENしているポート一覧取得.
 
 显示ssh客户端版本
 
-## 2. ssh-keygen
+## 15.2. ssh-keygen
 
 ### ssh-keygen -t rsa -f ~/.ssh/id_rsa_ansible -N ""
 
@@ -91,32 +91,32 @@ LISTENしているポート一覧取得.
  1. id_rsa_ansible
  2. id_rsa_ansible.pub（公开键）
 
-## 3. ssh-keyscan
+## 15.3. ssh-keyscan
 
 ### ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 初回SSH接続時にでる Are you sure you want to continue connecting (yes/no)? という問いに対して yes と答えたのと同じように、指定したホストの公開鍵を取得して ~/.ssh/known_hosts ファイルへ追記してくれる。
 
-## 4. ssh-copy-id
+## 15.4. ssh-copy-id
 
 ### ssh-copy-id -i ${identity_file} ${USER}@${target_host}
 
 ssh-copy-id -i ~/.ssh/hoge.pub user01@192.168.10.15 \
 sshの公開鍵認証の鍵登録（.ssh/authorized_keys）
 
-## 4. visudo
+# 16. visudo
 
 visudoコマンドは管理者の権限でのみ操作できる。（/etc/sudoers）
 
-# file
+# 17. file
 
-## file xx.text
+## 17.1. file xx.text
 
 显示文件的属性，编码等信息
 
-# 归档操作
+# 18. 圧縮解凍関連
 
-## 1. tar
+## 18.1. tar
 
 ### $ tar cvf archive_name.tar dirname/
 
@@ -130,27 +130,29 @@ visudoコマンドは管理者の権限でのみ操作できる。（/etc/sudoer
 
 查看tar文件
 
-# 2. grep
+# 19. 検索関連
 
-## $ grep -i "the" demo_file
+## 19.1. grep
+
+### $ grep -i "the" demo_file
 
 在文件中查找字符串(不区分大小写)
 
-## $ grep -A 3 -i "example" demo_text
+### $ grep -A 3 -i "example" demo_text
 
 输出成功匹配的行，以及该行之后的三行
 
-## $ grep -r "ramesh" *
+### $ grep -r "ramesh" *
 
 在一个文件夹中递归查询包含指定字符串的文件
 
-# 3. find
+## 19.2. find
 
-## $ find -iname "MyProgram.c"
+### $ find -iname "MyProgram.c"
 
 查找指定文件名的文件(不区分大小写)
 
-## $ find -iname "MyProgram.c" -exec md5sum {} \
+### $ find -iname "MyProgram.c" -exec md5sum {} \
 
 对找到的文件执行某个命令
 
@@ -158,7 +160,7 @@ visudoコマンドは管理者の権限でのみ操作できる。（/etc/sudoer
 
 查找home目录下的所有空文件
 
-# 4. sed
+# 20. sed
 
 ## $ sed 's/.$//' filename
 
@@ -172,7 +174,7 @@ visudoコマンドは管理者の権限でのみ操作できる。（/etc/sudoer
 
 为非空行添加行号
 
-# 6. awk
+# 21. awk
 
 ## $ awk '!($0 in array) { array[$0]; print}' temp
 
@@ -186,402 +188,400 @@ visudoコマンドは管理者の権限でのみ操作できる。（/etc/sudoer
 
 打印文件中的指定部分的字段
 
-7. vim
+# 22. vim
+
+## $ vim +10 filename.txt
 
 打开文件并跳到第10行
 
-$ vim +10 filename.txt
+## $ vim +/search-term filename.txt
+
 打开文件跳到第一个匹配的行
 
-$ vim +/search-term filename.txt
+## $ vim -R /etc/passwd
+
 以只读模式打开文件
 
-$ vim -R /etc/passwd
-更多示例：How To Record and Play in Vim Editor
+# 23. diff
 
-8. diff
+## $ diff -w name_list.txt name_list_new.txt
 
 比较的时候忽略空白符
 
-$ diff -w name_list.txt name_list_new.txt
-9. sort
+# 24. sort
+
+## $ sort names.txt
 
 以升序对文件内容排序
 
-$ sort names.txt
+## $ sort -r names.txt
+
 以降序对文件内容排序
 
-$ sort -r names.txt
+## $ sort -t: -k 3n /etc/passwd | more
+
 以第三个字段对/etc/passwd的内容排序
 
-$ sort -t: -k 3n /etc/passwd | more
-10. export
+# 25. export
 
-输出跟字符串oracle匹配的环境变量
+## $ export | grep ORCALE
 
-$ export | grep ORCALE
-declare -x ORACLE_BASE="/u01/app/oracle"
-declare -x ORACLE_HOME="/u01/app/oracle/product/10.2.0"
-declare -x ORACLE_SID="med"
+输出跟字符串oracle匹配的环境变量 \
+declare -x ORACLE_BASE="/u01/app/oracle" \
+declare -x ORACLE_HOME="/u01/app/oracle/product/10.2.0" \
+declare -x ORACLE_SID="med" \
 declare -x ORACLE_TERM="xterm"
+
+## $ export ORACLE_HOME=/u01/app/oracle/product/10.2.0
+
 设置全局环境变量
 
-$ export ORACLE_HOME=/u01/app/oracle/product/10.2.0
-11. xargs
+# 26. xargs
+
+## $ ls *.jpg | xargs -n1 -i cp {} /external-hard-drive/directory
 
 将所有图片文件拷贝到外部驱动器
 
-$ ls *.jpg | xargs -n1 -i cp {} /external-hard-drive/directory
+## $ find / -name *.jpg -type f -print | xargs tar -cvzf images.tar.gz
+
 将系统中所有jpd文件压缩打包
 
-$ find / -name *.jpg -type f -print | xargs tar -cvzf images.tar.gz
+## $ cat url-list.txt | xargs wget –c
+
 下载文件中列出的所有url对应的页面
 
-$ cat url-list.txt | xargs wget –c
-12. ls
+# 27. ls
 
-以易读的方式显示文件大小(显示为MB,GB...)
+## $ ls -lh
 
-$ ls -lh
+以易读的方式显示文件大小(显示为MB,GB...) \
 -rw-r----- 1 ramesh team-dev 8.9M Jun 12 15:27 arch-linux.txt.gz
+
+## $ ls -ltr
+
 以最后修改时间升序列出文件
 
-$ ls -ltr
+## $ ls -F
+
 在文件名后面显示文件类型
 
-$ ls -F
-更多示例：Unix LS Command: 15 Practical Examples
-
-13. pwd
+# 28. pwd
 
 输出当前工作目录
 
-14. cd
+# 29. cd
 
-cd -可以在最近工作的两个目录间切换
+cd -可以在最近工作的两个目录间切换 \
 使用shopt -s cdspell可以设置自动对cd命令进行拼写检查
 
-更多示例：6 Awesome Linux cd command Hacks
+# 30. gzip
 
-15. gzip
+## $ gzip test.txt
 
 创建一个*.gz的压缩文件
 
-$ gzip test.txt
+## $ gzip -d test.txt.gz
+
 解压*.gz文件
 
-$ gzip -d test.txt.gz
-显示压缩的比率
+## $ gzip -l *.gz
 
-$ gzip -l *.gz
      compressed        uncompressed  ratio uncompressed_name
           23709               97975  75.8% asp-patch-rpms.txt
-16. bzip2
+显示压缩的比率
+
+# 31. bzip2
+
+## $ bzip2 test.txt
 
 创建*.bz2压缩文件
 
-$ bzip2 test.txt
+## bzip2 -d test.txt.bz2
+
 解压*.bz2文件
 
-bzip2 -d test.txt.bz2
-更多示例：BZ is Eazy! bzip2, bzgrep, bzcmp, bzdiff, bzcat, bzless, bzmore examples
+# 32. uzip
 
-17. uzip
+## $ unzip test.zip
 
 解压*.zip文件
 
-$ unzip test.zip
-查看*.zip文件的内容
+## $ unzip -l jasper.zip
 
-$ unzip -l jasper.zip
+查看*.zip文件的内容 \
 Archive:  jasper.zip
+
 Length     Date   Time    Name
 --------    ----   ----    ----
 40995  11-30-98 23:50   META-INF/MANIFEST.MF
 32169  08-25-98 21:07   classes_
 15964  08-25-98 21:07   classes_names
 10542  08-25-98 21:07   classes_ncomp
-18. shutdown
+
+# 33. shutdown
+
+## $ shutdown -h now
 
 关闭系统并立即关机
 
-$ shutdown -h now
+## $ shutdown -h +10
+
 10分钟后关机
 
-$ shutdown -h +10
+## $ shutdown -r now
+
 重启
 
-$ shutdown -r now
+## $ shutdown -Fr now
+
 重启期间强制进行系统检查
 
-$ shutdown -Fr now
-19. ftp
+# 34. ftp
 
-ftp命令和sftp命令的用法基本相似连接ftp服务器并下载多个文件
+## $ ftp IP/hostname
 
-$ ftp IP/hostname
-ftp> mget *.html
-显示远程主机上文件列表
+ftp命令和sftp命令的用法基本相似连接ftp服务器并下载多个文件 \
 
-ftp> mls *.html -
-/ftptest/features.html
-/ftptest/index.html
-/ftptest/othertools.html
-/ftptest/samplereport.html
+ftp> mget *.html \
+ftp> mls *.html - \
+显示远程主机上文件列表 \
+/ftptest/features.html \
+/ftptest/index.html \
+/ftptest/othertools.html \
+/ftptest/samplereport.html \
 /ftptest/usage.html
-更多示例：FTP and SFTP Beginners Guide with 10 Examples
 
-20. crontab
+# 35. crontab
+
+## $ crontab -u john -l
 
 查看某个用户的crontab入口
 
-$ crontab -u john -l
+## */10 **** /home/ramesh/check-disk-space
+
 设置一个每十分钟执行一次的计划任务
 
-*/10 * * * * /home/ramesh/check-disk-space
-更多示例：Linux Crontab: 15 Awesome Cron Job Examples
+# 36. service
 
-21. service
-
-service命令用于运行System V init脚本，这些脚本一般位于/etc/init.d文件下，这个命令可以直接运行这个文件夹里面的脚本，而不用加上路径
+## $ service ssh status
 
 查看服务状态
 
-$ service ssh status
+## $ service --status-all
+
 查看所有服务状态
 
-$ service --status-all
+## $ service ssh restart
+
 重启服务
 
-$ service ssh restart
-22. ps
+# 37. ps
 
-ps命令用于显示正在运行中的进程的信息，ps命令有很多选项，这里只列出了几个
+## $ ps -ef | more
 
 查看当前正在运行的所有进程
 
-$ ps -ef | more
+## $ ps -efH | more
+
 以树状结构显示当前正在运行的进程，H选项表示显示进程的层次结构
 
-$ ps -efH | more
-23. free
+# 38. free
 
-这个命令用于显示系统当前内存的使用情况，包括已用内存、可用内存和交换内存的情况
+## $ free
 
 默认情况下free会以字节为单位输出内存的使用量
 
-$ free
-             total       used       free     shared    buffers     cached
-Mem:       3566408    1580220    1986188          0     203988     902960
--/+ buffers/cache:     473272    3093136
-Swap:      4000176          0    4000176
-如果你想以其他单位输出内存的使用量，需要加一个选项，-g为GB，-m为MB，-k为KB，-b为字节
+## $ free -g
 
-$ free -g
-             total       used       free     shared    buffers     cached
-Mem:             3          1          1          0          0          0
--/+ buffers/cache:          0          2
-Swap:            3          0          3
-如果你想查看所有内存的汇总，请使用-t选项，使用这个选项会在输出中加一个汇总行
+-g为GB，-m为MB，-k为KB，-b为字节
 
-ramesh@ramesh-laptop:~$ free -t
-             total       used       free     shared    buffers     cached
-Mem:       3566408    1592148    1974260          0     204260     912556
--/+ buffers/cache:     475332    3091076
-Swap:      4000176          0    4000176
+## free -t
+
+如果你想查看所有内存的汇总，请使用-t选项，使用这个选项会在输出中加一个汇总行 \
 Total:     7566584    1592148    5974436
-24. top
+
+# 39. top
 
 top命令会显示当前系统中占用资源最多的一些进程（默认以CPU占用率排序）如果你想改变排序方式，可以在结果列表中点击O（大写字母O）会显示所有可用于排序的列，这个时候你就可以选择你想排序的列
 
-Current Sort Field:  P  for window 1:Def
-Select sort field via field letter, type any other key to return
+## $ top -u oracle
 
-  a: PID        = Process Id              v: nDRT       = Dirty Pages count
-  d: UID        = User Id                 y: WCHAN      = Sleeping in Function
-  e: USER       = User Name               z: Flags      = Task Flags
-  ........
 如果只想显示某个特定用户的进程，可以使用-u选项
 
-$ top -u oracle
-更多示例：Can You Top This? 15 Practical Linux Top Command Examples
+# 40. df
 
-25. df
+## $ df -k
 
 显示文件系统的磁盘使用情况，默认情况下df -k 将以字节为单位输出磁盘的使用量
 
-$ df -k
-Filesystem           1K-blocks      Used Available Use% Mounted on
-/dev/sda1             29530400   3233104  24797232  12% /
-/dev/sda2            120367992  50171596  64082060  44% /home
+## $ df -h
+
 使用-h选项可以以更符合阅读习惯的方式显示磁盘使用量
 
-$ df -h
-Filesystem                  Size   Used  Avail Capacity  iused      ifree %iused  Mounted on
-/dev/disk0s2               232Gi   84Gi  148Gi    37% 21998562   38864868   36%   /
-devfs                      187Ki  187Ki    0Bi   100%      648          0  100%   /dev
-map -hosts                   0Bi    0Bi    0Bi   100%        0          0  100%   /net
-map auto_home                0Bi    0Bi    0Bi   100%        0          0  100%   /home
-/dev/disk0s4               466Gi   45Gi  421Gi    10%   112774  440997174    0%   /Volumes/BOOTCAMP
-//app@izenesoft.cn/public  2.7Ti  1.3Ti  1.4Ti    48%        0 18446744073709551615    0%   /Volumes/public
+## $ df -T
+
 使用-T选项显示文件系统类型
 
-$ df -T
-Filesystem    Type   1K-blocks      Used Available Use% Mounted on
-/dev/sda1     ext4    29530400   3233120  24797216  12% /
-/dev/sda2     ext4   120367992  50171596  64082060  44% /home
-26. kill
+# 41. kill
 
 kill用于终止一个进程。一般我们会先用ps -ef查找某个进程得到它的进程号，然后再使用kill -9 进程号终止该进程。你还可以使用killall、pkill、xkill来终止进程
 
-$ ps -ef | grep vim
-ramesh    7243  7222  9 22:43 pts/2    00:00:00 vim
-
+$ ps -ef | grep vim \
 $ kill -9 7243
-更多示例：4 Ways to Kill a Process – kill, killall, pkill, xkill
 
-27. rm
+# 42. rm
+
+## $ rm -i filename.txt
 
 删除文件前先确认
 
-$ rm -i filename.txt
+## $ rm -i file*
+
 在文件名中使用shell的元字符会非常有用。删除文件前先打印文件名并进行确认
 
-$ rm -i file*
+## $ rm -r example
+
 递归删除文件夹下所有文件，并删除该文件夹
 
-$ rm -r example
-28. cp
+# 43. cp
+
+## $ cp -p file1 file2
 
 拷贝文件1到文件2，并保持文件的权限、属主和时间戳
 
-$ cp -p file1 file2
+## $ cp -i file1 file2
+
 拷贝file1到file2，如果file2存在会提示是否覆盖
 
-$ cp -i file1 file2
-29. mv
+# 44. mv
 
-将文件名file1重命名为file2，如果file2存在则提示是否覆盖
+## $ mv -i file1 file2
 
-$ mv -i file1 file2
+将文件名file1重命名为file2，如果file2存在则提示是否覆盖 \
 注意如果使用-f选项则不会进行提示
+
+## $ mv -v file1 file2
 
 -v会输出重命名的过程，当文件名中包含通配符时，这个选项会非常方便
 
-$ mv -v file1 file2
-30. cat
+# 45. cat
 
-你可以一次查看多个文件的内容，下面的命令会先打印file1的内容，然后打印file2的内容
+## $ cat file1 file2
 
-$ cat file1 file2
+一次查看多个文件的内容，下面的命令会先打印file1的内容，然后打印file2的内容
+
+## $ cat -n /etc/logrotate.conf
+
 -n命令可以在每行的前面加上行号
 
-$ cat -n /etc/logrotate.conf
-/var/log/btmp {
-missingok
-3	    monthly
-4	    create 0660 root utmp
-5	    rotate 1
-6 }
-31. mount
+# 46. mount
+
+> mkdir /u01 \
+> mount /dev/sdb1 /u01
 
 如果要挂载一个文件系统，需要先创建一个目录，然后将这个文件系统挂载到这个目录上
 
-# mkdir /u01
+> /dev/sdb1 /u01 ext2 defaults 0 2
 
-# mount /dev/sdb1 /u01
 也可以把它添加到fstab中进行自动挂载，这样任何时候系统重启的时候，文件系统都会被加载
 
-/dev/sdb1 /u01 ext2 defaults 0 2
-32. chmod
+# 47. chmod
 
-chmod用于改变文件和目录的权限
+## $ chmod ug+rwx file.txt
 
 给指定文件的属主和属组所有权限(包括读、写、执行)
 
-$ chmod ug+rwx file.txt
+## $ chmod g-rwx file.txt
+
 删除指定文件的属组的所有权限
 
-$ chmod g-rwx file.txt
+## $ chmod -R ug+rwx file.txt
+
 修改目录的权限，以及递归修改目录下面所有文件和子目录的权限
 
-$ chmod -R ug+rwx file.txt
-更多示例：7 Chmod Command Examples for Beginners
+# 48. chown [-R] 属主名：属组名 文件名
 
-33. chown [-R] 属主名：属组名 文件名
-
-chown用于改变文件属主和属组
+## $ chown oracle:dba dbora.sh
 
 同时将某个文件的属主改为oracle，属组改为db
 
-$ chown oracle:dba dbora.sh
+## $ chown -R oracle:dba /home/oracle
+
 使用-R选项对目录和目录下的文件进行递归修改
 
-$ chown -R oracle:dba /home/oracle
-
-34. chgrp [-R] 属组名 文件名
+# 49. chgrp [-R] 属组名 文件名
 
 更改文件属组
 
-34. passwd
+# 50. passwd
 
 passwd用于在命令行修改密码，使用这个命令会要求你先输入旧密码，然后输入新密码
 
-$ passwd
+## passwd USERNAME
+
 超级用户可以用这个命令修改其他用户的密码，这个时候不需要输入用户的密码
 
-# passwd USERNAME
+## passwd -d USERNAME
+
 passwd还可以删除某个用户的密码，这个命令只有root用户才能操作，删除密码后，这个用户不需要输入密码就可以登录到系统
 
-# passwd -d USERNAME
-35. mkdir
+# 51. mkdir
+
+## $ mkdir ~/temp
 
 在home目录下创建一个名为temp的目录
 
-$ mkdir ~/temp
+## $ mkdir -p dir1/dir2/dir3/dir4/
+
 使用-p选项可以创建一个路径上所有不存在的目录
 
-$ mkdir -p dir1/dir2/dir3/dir4/
-36. ifconfig
+# 52. ifconfig
 
 ifconfig用于查看和配置Linux系统的网络接口
 
+## $ ifconfig -a
+
 查看所有网络接口及其状态
 
-$ ifconfig -a
+## $ ifconfig eth0 up/down
+
 使用up和down命令启动或停止某个接口
 
-$ ifconfig eth0 up
-
-$ ifconfig eth0 down
-更多示例：Ifconfig: 7 Examples To Configure Network Interface
-
-37. uname
+# 53. uname
 
 uname可以显示一些重要的系统信息，例如内核名称、主机名、内核版本号、处理器类型之类的信息
 
-$ uname -a
+## $ uname -a
+
 Linux john-laptop 2.6.32-24-generic #41-Ubuntu SMP Thu Aug 19 01:12:52 UTC 2010 i686 GNU/Linux
-38. whereis
+
+# 54. whereis
 
 当你不知道某个命令的位置时可以使用whereis命令，下面使用whereis查找ls的位置
 
-$ whereis ls
+## $ whereis ls
+
 ls: /bin/ls /usr/share/man/man1/ls.1.gz /usr/share/man/man1p/ls.1p.gz
+
+## $ whereis -u -B /tmp -f lsmk
+
 当你想查找某个可执行程序的位置，但这个程序又不在whereis的默认目录下，你可以使用-B选项，并指定目录作为这个选项的参数。下面的命令在/tmp目录下查找lsmk命令
 
-$ whereis -u -B /tmp -f lsmk
 lsmk: /tmp/lsmk
-39. whatis
+
+# 55. whatis
 
 wathis显示某个命令的描述信息
 
-$ whatis ls
-ls		(1)  - list directory contents
+## $ whatis ls
 
-$ whatis ifconfig
+ls (1)  - list directory contents
+
+## $ whatis ifconfig
+
 ifconfig (8)         - configure a network interface
-40. locate
+
+# 56. locate
 
 locate命名可以显示某个指定文件（或一组文件）的路径，它会使用由updatedb创建的数据库
 
@@ -596,24 +596,27 @@ $ locate crontab
 /usr/share/man/man5/anacrontab.5.gz
 /usr/share/man/man5/crontab.5.gz
 /usr/share/vim/vim72/syntax/crontab.vim
-41. man
+
+# 57. man
+
+## $ man crontab
 
 显示某个命令的man页面
 
-$ man crontab
-有些命令可能会有多个man页面，每个man页面对应一种命令类型
+## $ man SECTION-NUMBER commandname
 
-$ man SECTION-NUMBER commandname
+有些命令可能会有多个man页面，每个man页面对应一种命令类型 \
 man页面一般可以分为8种命令类型
 
-用户命令
-系统调用
-c库函数
-设备与网络接口
-文件格式
-游戏与屏保
-环境、表、宏
-系统管理员命令和后台运行命令
+1. 用户命令
+2. 系统调用
+3. c库函数
+4. 设备与网络接口
+5. 文件格式
+6. 游戏与屏保
+7. 环境、表、宏
+8. 系统管理员命令和后台运行命令
+
 例如，我们执行whatis crontab，你可以看到crontab有两个命令类型1和5，所以我们可以通过下面的命令查看命令类型5的man页面
 
 $ whatis crontab
@@ -621,102 +624,111 @@ crontab (1)          - maintain crontab files for individual users (V3)
 crontab (5)          - tables for driving cron
 
 $ man 5 crontab
-42. tail
+
+# 58. tail
+
+## $ tail filename.txt
 
 tail命令默认显示文件最后的10行文本
 
-$ tail filename.txt
+## $ tail -n N filename.txt
+
 你可以使用-n选项指定要显示的行数
 
-$ tail -n N filename.txt
+## $ tail -f log-file
+
 你也可以使用-f选项进行实时查看，这个命令执行后会等待，如果有新行添加到文件尾部，它会继续输出新的行，在查看日志时这个选项会非常有用。你可以通过CTRL-C终止命令的执行
 
-$ tail -f log-file
-更多示例：3 Methods To View tail -f output of Multiple Log Files in One Terminal
+# 59. less
 
-43. less
+## $ less huge-log-file.log
 
 这个命名可以在不加载整个文件的前提下显示文件内容，在查看大型日志文件的时候这个命令会非常有用
 
-$ less huge-log-file.log
 当你用less命令打开某个文件时，下面两个按键会给你带来很多帮助，他们用于向前和向后滚屏
 
-CTRL+F – forward one window
+CTRL+F – forward one window \
 CTRL+B – backward one window
-更多示例：Unix Less Command: 10 Tips for Effective Navigation
 
-44. su
+# 60. su
+
+## $ su - USERNAME
 
 su命令用于切换用户账号，超级用户使用这个命令可以切换到任何其他用户而不用输入密码
 
-$ su - USERNAME
-用另外一个用户名执行一个命令下面的示例中用户john使用raj用户名执行ls命令，执行完后返回john的账号
+## $ su - raj -c 'ls'
 
-[john@dev-server]$ su - raj -c 'ls'
+用另外一个用户名执行一个命令 \
+示例中用户john使用raj用户名执行ls命令，执行完后返回john的账号
 
-[john@dev-server]$
+## $ su -s 'SHELLNAME' USERNAME
+
 用指定用户登录，并且使用指定的shell程序，而不用默认的
 
-$ su -s 'SHELLNAME' USERNAME
-45. mysql
+# 61. mysql
+
+## $ mysql -u root -p -h 192.168.1.2
 
 mysql可能是Linux上使用最广泛的数据库，即使你没有在你的服务器上安装mysql，你也可以使用mysql客户端连接到远程的mysql服务器
 
 连接一个远程数据库，需要输入密码
 
-$ mysql -u root -p -h 192.168.1.2
+## $ mysql -u root -p
+
 连接本地数据库
 
-$ mysql -u root -p
 你也可以在命令行中输入数据库密码，只需要在-p后面加上密码作为参数，可以直接写在p后面而不用加空格
 
-46. yum
+# 62. yum
+
+## $ yum install httpd
 
 使用yum安装apache
 
-$ yum install httpd
+## $ yum update httpd
+
 更新apache
 
-$ yum update httpd
+## $ yum remove httpd
+
 卸载/删除apache
 
-$ yum remove httpd
-47. rpm
+# 63. rpm
+
+## rpm -ivh httpd-2.2.3-22.0.1.el5.i386.rpm
 
 使用rpm安装apache
 
-# rpm -ivh httpd-2.2.3-22.0.1.el5.i386.rpm
+## rpm -uvh httpd-2.2.3-22.0.1.el5.i386.rpm
+
 更新apache
 
-# rpm -uvh httpd-2.2.3-22.0.1.el5.i386.rpm
+## rpm -ev httpd
+
 卸载/删除apache
 
-# rpm -ev httpd
-更多示例：RPM Command: 15 Examples to Install, Uninstall, Upgrade, Query RPM Packages
+# 64. ping
 
-48. ping
+## $ ping -c 5 gmail.com
 
 ping一个远程主机，只发5个数据包
 
-$ ping -c 5 gmail.com
-更多示例：Ping Tutorial: 15 Effective Ping Command Examples
+# 65. date
 
-49. date
+## date -s "01/31/2010 23:59:53"
 
 设置系统日期
 
-# date -s "01/31/2010 23:59:53"
 当你修改了系统时间，你需要同步硬件时间和系统时间
+> # hwclock –systohc
+> # hwclock --systohc –utc
 
-# hwclock –systohc
+# 66. wget
 
-# hwclock --systohc –utc
-50. wget
+## $ wget XXX/sourceforge/nagios/nagios-3.2.1.tar.gz
 
 使用wget从网上下载软件、音乐、视频
 
-$ wget http://prdownloads.sourceforge.net/sourceforge/nagios/nagios-3.2.1.tar.gz
-下载文件并以指定的文件名保存文件
+## $ wget -O taglist.zip XXX/download_script.php?src_id=7701
 
-$ wget -O taglist.zip http://www.vim.org/scripts/download_script.php?src_id=7701
-更多示例：The Ultimate Wget Download Guide With 15 Awesome Examples
+下载文件并以指定的文件名保存文件
