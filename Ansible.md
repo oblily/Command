@@ -11,5 +11,7 @@ ansible 2.7.5 \
 &nbsp;&nbsp;python version = 2.7.5 (default, Oct 30 2018, 23:45:53) [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
 
 ## ansible-playbook xx.yml
-
+ -i : notify eventory file.
+ --check : run in dry-run mode.(virtual mode to run playbook.)
+ --diff : diff.
 run playbook.

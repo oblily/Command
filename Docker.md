@@ -169,3 +169,28 @@ logout：Docker Hubからログアウト
 ## docker run
 
 使用image，启动容器
+
+## docker stop
+
+停止容器
+
+## docker start
+
+停止的容器再度启动
+
+## docker pull dockername
+
+默认从DockerHub中拉取image
+
+## docker exec [option] container-name command
+
+对指定的容器实行某种命令
+
+## docker rm [option] container-name
+
+容器的删除
+
+## docker logs [option] container-name
+
+容器执行log确认
+
