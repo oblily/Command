@@ -140,6 +140,24 @@ commit：変更があったコンテナからイメージを作成
 
 export：コンテナをtarファイルに保存
 
+# docker-compose
+
+## docker-compose --version
+
+版本确认
+
+## docker-compose up
+
+根据yml设定内容启动容器
+
+## docker-compose stop
+
+根据yml设定内容停止容器
+
+## docker-compose down
+
+根据yml设定内容停止并且销毁容器
+
 # その他
 
 ## docker version
@@ -193,4 +211,17 @@ logout：Docker Hubからログアウト
 ## docker logs [option] container-name
 
 容器执行log确认
+
+## docker build [option] Dockerfile-path
+
+image做成
+
+## docker commit container-name container-image-name
+
+container的现时点的状态保存到image
+
+## docker push container-image-name[:tagname]
+
+向仓库提交image
+
 
