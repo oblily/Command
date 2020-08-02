@@ -84,6 +84,7 @@ $ git checkout -b <ブランチ名>
 
 ローカルでブランチを切り替え
 $ git checkout <ブランチ名>
+
 ブランチ作成 & 切り替え
 $ git checkout -b <ブランチ名>
 ブランチ名の変更
